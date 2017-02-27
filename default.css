@@ -74,6 +74,12 @@
 		margin-left: 25%;
 	}
 	
+	#fiddle
+	{
+		width: 25%;
+		margin: 0 auto;
+	}
+	
 	.sidebox
 	{
 		position: absolute;
