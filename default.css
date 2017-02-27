@@ -93,7 +93,15 @@
 
 	.sideboxtext
 	{
-		text-align: center;
+		  background: black;
+  color: white;
+  border: 10px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  resize: vertical;
+  overflow: auto;
 	}	
 		
 	.container
