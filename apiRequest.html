@@ -59,130 +59,49 @@ Released   : 20140207
 	<h2 id="header2">Our First Request</h2>
 	<p id="textcontent">Let's jump right into this and demonstrate our first request. This request will be asking Petfinder to return 
 	basic information for a random pet in their database.
-	</p>
-	<p id="textcontent"><code>
-		<!DOCTYPE html>
-		  <html>
-		    <head>
-		      <meta charset="UTF-8">
-			<title> Example API Request
-			  </title>
-			    </head>
-			    <body>
-			      <div class="output"></div>
-				<script src="https://code.jquery.com/jquery-1.12.3.min.js" type="application/javascript">
-				  </script>
-				    <script type="text/javascript">
-				      $(document).ready(function() {
-					var url = 'http://api.petfinder.com/pet.getRandom?key=b12502ce80e02c5e399e53822ffdb823&output=basic&format=json'; 
-					 $.ajax({ 
-							type: 'GET', 
-							url: url + '&callback=?', 
-							dataType: 'json', 
-							success: function(data) { 
-								console.log(data);
-								var x = JSON.stringify(data) 
-								$(".output").html(x); 
-							} 
-						}); 
-				       });
-				  </script>
-			   </body>
-		  </html>
-	</code>
-	</p>
+		</p>
+		<p id="textcontent">
+		<div id="content">
+		<code>
+			<!DOCTYPE html>
+			  <html>
+			    <head>
+			      <meta charset="UTF-8">
+				<title> Example API Request
+				  </title>
+				    </head>
+				    <body>
+				      <div class="output"></div>
+					<script src="https://code.jquery.com/jquery-1.12.3.min.js" type="application/javascript">
+					  </script>
+					    <script type="text/javascript">
+					      $(document).ready(function() {
+						var url = 'http://api.petfinder.com/pet.getRandom?key=b12502ce80e02c5e399e53822ffdb823&output=basic&format=json'; 
+						 $.ajax({ 
+								type: 'GET', 
+								url: url + '&callback=?', 
+								dataType: 'json', 
+								success: function(data) { 
+									console.log(data);
+									var x = JSON.stringify(data) 
+									$(".output").html(x); 
+								} 
+							}); 
+					       });
+					  </script>
+				   </body>
+			  </html>
+			</code>
+		</div>
 	<br>
-	<div>
-		<table style="width: 100%; border: 0">
-			<tbody style="border: 0">
-				<tr style="border: 0">
-					<th style="border: 0">JavaScript</th>
-					<th style="border: 0">JSON</th>
-				</tr>
-				<tr style="border: 0">
-					<td style="padding: 0 20px 20px 20px; border: 0"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/bL6m7wu7/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></td>
-					<td style="padding: 0 20px 20px 20px; border: 0"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/s04pfgmf/5/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 						
-	<p id="textcontent">The data is written as name/value pairs. As you can see from the two examples, the main difference between JSON and JavaScript 
-	is that the name portion of the pairs in JSON have to be in quotes while JavaScript does not. It is also important to note that 
-	the assigned value can be a nested JSON object. In our example, we have a an object named pizza with two name/value pairs: <em>Hawaiin/object</em> 
-	and <em>Vegetarian/object</em>. These objects are also in JSON format whose name/value pairs are: <em>name/(name of pizza)</em> and 
-	<em>toppings/(array of toppings)</em>. The values in JSON can be of most types including a string, a number, a JSON object, an array, 
-	a boolean, or null. However, it cannot be a function, a date, or undefined.  
+	<p id="textcontent">
 	</p>
 	
 	<h2 id="header2">Accessing Data from JSON</h2>
-	<p id="textcontent">As mentioned above, due to the similar structure between JSON and JavaScript objects, we can use dot notation to access specific data from a JSON object. In our above example, we use 
-	<code>pizza.Vegetarian.toppings[0]</code> to grab the value "olives". 
+	<p id="textcontent">
 	</p>
-	<div id="content">
-	<table style="width: 100%;">
-  <tbody>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Type</th>
-    </tr>
-    <tr>
-      <td>Pizza</td>
-      <td>
-        <ul>
-          <li>Hawaiian</li>
-          <li>Vegetarian</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>JSON object</li>
-          <li>JSON object</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>Vegetarian</td>
-      <td>
-        <ul>
-          <li>Name</li>
-          <li>Toppings</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>string</li>
-          <li>array</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <ul>
-          <li>Toppings[0]</li>
-          <li>Toppings[1]</li>
-          <li>Toppings[2]</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>olives</li>
-          <li>mushrooms</li>
-          <li>onions</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>string</li>
-          <li>string</li>
-          <li>string</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+	
 <p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your JSON object (ex. New York Style) then you will need to use bracket notation 
 to access its value. Accessing New York Style toppings would look like <code>pizza["New York Style"].toppings[0]</code>.
 </p>
@@ -196,7 +115,7 @@ to access its value. Accessing New York Style toppings would look like <code>piz
 	
 	<div id="button"><a href="index - Copy.html">Next</a></div>
 </div>
-	</div>
+	
 <div id="copyright" class="container">
 	<p>&copy; Kevin Woods. All rights reserved. | CSS based on <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 </div>
