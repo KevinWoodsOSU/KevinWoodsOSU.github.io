@@ -1,4 +1,4 @@
-	html, body
+		html, body
 	{
 		height: 100%;
 	}
@@ -60,6 +60,7 @@
 	
 	#textcontent
 	{
+		padding-top: 20px;
 		font-weight: normal;
 		text-align: left;
 		
@@ -87,10 +88,15 @@
 		margin: 0 auto;
 	}
 	
+	table, th, td, tr
+	{
+		border: 1px solid green;
+	}
+	
 	.sidebox
 	{
 		position: absolute;
-		margin-left: 90px;
+		margin-left: 10px;
 		width: 200px;
 		height: 200px;
 		background: #00FF7F;
@@ -384,7 +390,6 @@
 	{
 		font-size: 250%;
 		padding-top: 50px;
-		padding-bottom: 30px;
 	}
 
 /*********************************************************************************/
@@ -742,5 +747,3 @@
 	{
 		border-top-color: #292929;
 	}
-
-	
