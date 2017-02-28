@@ -60,7 +60,8 @@ Released   : 20140207
 	<p id="textcontent">Let's jump right into this and demonstrate our first request. This request will be asking Petfinder to return 
 	basic information for a random pet in their database.
 	</p>
-	<p id="textcontent">	
+	<p id="textcontent">
+	<code>
 	     	$(document).ready(function() {
 		var url = 'http://api.petfinder.com/pet.getRandom?key=yourKeyHere&output=basic&format=json'; 
 		$.ajax({ 
@@ -74,6 +75,7 @@ Released   : 20140207
 				} 
 			}); 
 	       	});
+	</code>
 	</p>
 	<br>
 						
