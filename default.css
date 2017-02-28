@@ -92,6 +92,13 @@
 	{
 		border: 1px solid green;
 	}
+
+	pre
+	{
+		text-align: left;
+		border: 1px solid black;
+		background-color: LightGray;
+	}
 	
 	.sidebox
 	{
