@@ -35,7 +35,7 @@ Released   : 20140207
 				<li><a href="index.html" accesskey="1" title="">Introduction</a></li>
 				<li><a href="settingUp.html" accesskey="2" title="">Setting Up</a></li>
 				<li class="current_page_item"><a href="json.html" accesskey="3" title="">JSON</a></li>
-				<li><a href="#" accesskey="4" title="">jQuery</a></li>
+				<li><a href="jquery.html" accesskey="4" title="">jQuery</a></li>
 				<li><a href="#" accesskey="5" title="">Accessing Data</a></li>
 			</ul>
 		</div>
@@ -59,21 +59,18 @@ Released   : 20140207
 	<p id="textcontent">JSON stands for <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation. Data exchanged between servers 
 	can only be in text. JSON is in an all text format, but is structured like a JavaScript object. This allows us to utilize the dot 
 	operator when extracting information. These two examples contain the same information except one is in JSON format and the other is a JavaScript object.
-	<!--<div class="sidebox"><div class="sideboxtext">Note: if a value in your JSON object has a space in it (i.e. "Extra Cheese") you must use bracket notation instead of 
-		dot notation. Ex: pizza["Extra Cheese"].name</div></div> -->
-
-	
+	</p>
 	<br>
 	<div>
-		<table style="width: 100%;">
-			<tbody>
-				<tr>
-					<th>JavaScript</th>
-					<th>JSON</th>
+		<table style="width: 100%; border: 0">
+			<tbody style="border: 0">
+				<tr style="border: 0">
+					<th style="border: 0">JavaScript</th>
+					<th style="border: 0">JSON</th>
 				</tr>
-				<tr>
-					<td style="padding: 0 20px 20px 20px;"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/bL6m7wu7/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></td>
-					<td style="padding: 0 20px 20px 20px;"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/s04pfgmf/5/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></td>
+				<tr style="border: 0">
+					<td style="padding: 0 20px 20px 20px; border: 0"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/bL6m7wu7/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></td>
+					<td style="padding: 0 20px 20px 20px; border: 0"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/s04pfgmf/5/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></td>
 				</tr>
 			</tbody>
 		</table>
@@ -81,11 +78,90 @@ Released   : 20140207
 						
 	<p id="textcontent">The data is written as name/value pairs. As you can see from the two examples, the main difference between JSON and JavaScript 
 	is that the name portion of the pairs in JSON have to be in quotes while JavaScript does not. It is also important to note that 
-	the assigned value can be an object. In our example, we have a an object named pizza with two name/value pairs: <em>Hawaiin/object</em> 
+	the assigned value can be a nested JSON object. In our example, we have a an object named pizza with two name/value pairs: <em>Hawaiin/object</em> 
 	and <em>Vegetarian/object</em>. These objects are also in JSON format whose name/value pairs are: <em>name/(name of pizza)</em> and 
 	<em>toppings/(array of toppings)</em>. The values in JSON can be of most types including a string, a number, a JSON object, an array, 
 	a boolean, or null. However, it cannot be a function, a date, or undefined.  
-	</p><br><br>
+	</p>
+	
+	<h2 id="header2">Accessing Data from JSON</h2>
+	<p id="textcontent">As mentioned above, due to the similar structure between JSON and JavaScript objects, we can use dot notation to access specific data from a JSON object. In our above example, we use 
+	<code>pizza.Vegetarian.toppings[0]</code> to grab the value "olives". 
+	</p>
+	<div id="content">
+	<table style="width: 100%;">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Type</th>
+    </tr>
+    <tr>
+      <td>Pizza</td>
+      <td>
+        <ul>
+          <li>Hawaiian</li>
+          <li>Vegetarian</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>JSON object</li>
+          <li>JSON object</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Vegetarian</td>
+      <td>
+        <ul>
+          <li>Name</li>
+          <li>Toppings</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>string</li>
+          <li>array</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Toppings[0]</li>
+          <li>Toppings[1]</li>
+          <li>Toppings[2]</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>olives</li>
+          <li>mushrooms</li>
+          <li>onions</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>string</li>
+          <li>string</li>
+          <li>string</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your JSON object (ex. New York Style) then you will need to use bracket notation 
+to access its value. Accessing New York Style toppings would look like <code>pizza["New York Style"].toppings[0]</code>.
+</p>
+<p id="textcontent">The last bit about handling JSON data is converting JavaScript to JSON and vice-versa. JavaScript has two built-in functions for handling these operations: 
+<code>JSON.stringify</code> converts a JavaScript object to a JSON object and <code>JSON.parse</code> converts a JSON object to a JavaScript object. Here is an example of the 
+<code>JSON.stringify</code> function on our pizza JSON object.
+</p>
+<div id="content"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/uxux39cv/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div>
+<p id="textcontent">All that the <code>JSON.stringify</code> function has done is wrap the names in the JavaScript object in quotation marks.</p>
+
 	
 	<div id="button"><a href="index - Copy.html">Next</a></div>
 </div>
