@@ -59,40 +59,24 @@ Released   : 20140207
 	<h2 id="header2">Our First Request</h2>
 	<p id="textcontent">Let's jump right into this and demonstrate our first request. This request will be asking Petfinder to return 
 	basic information for a random pet in their database.
-		</p>
-		<p id="textcontent">
-		<div id="content">
-		<code>
-			<!DOCTYPE html>
-			  <html>
-			    <head>
-			      <meta charset="UTF-8">
-				<title> Example API Request
-				  </title>
-				    </head>
-				    <body>
-				      <div class="output"></div>
-					<script src="https://code.jquery.com/jquery-1.12.3.min.js" type="application/javascript">
-					  </script>
-					    <script type="text/javascript">
-					      $(document).ready(function() {
-						var url = 'http://api.petfinder.com/pet.getRandom?key=b12502ce80e02c5e399e53822ffdb823&output=basic&format=json'; 
-						 $.ajax({ 
-								type: 'GET', 
-								url: url + '&callback=?', 
-								dataType: 'json', 
-								success: function(data) { 
-									console.log(data);
-									var x = JSON.stringify(data) 
-									$(".output").html(x); 
-								} 
-							}); 
-					       });
-					  </script>
-				   </body>
-			  </html>
-			</code>
-		</div>
+	</p>
+	<div id="content">
+	<pre>	
+	     	$(document).ready(function() {
+		var url = 'http://api.petfinder.com/pet.getRandom?key=b12502ce80e02c5e399e53822ffdb823&output=basic&format=json'; 
+		$.ajax({ 
+			type: 'GET', 
+			url: url + '&callback=?', 
+			dataType: 'json', 
+			success: function(data) { 
+				console.log(data);
+				var x = JSON.stringify(data) 
+				$(".output").html(x); 
+				} 
+			}); 
+	       	});
+	</pre>
+	</div>
 	<br>
 						
 	<p id="textcontent">
