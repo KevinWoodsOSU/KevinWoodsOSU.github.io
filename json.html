@@ -35,7 +35,6 @@ Released   : 20140207
 				<li><a href="index.html" accesskey="1" title="">Introduction</a></li>
 				<li><a href="settingUp.html" accesskey="2" title="">Setting Up</a></li>
 				<li class="current_page_item"><a href="json.html" accesskey="3" title="">JSON</a></li>
-				<li><a href="jquery.html" accesskey="4" title="">jQuery</a></li>
 				<li><a href="apiRequest.html" accesskey="5" title="">API Request</a></li>
 				<li><a href="dom.html" accesskey="5" title="">DOM</a></li>
 			</ul>
@@ -48,8 +47,8 @@ Released   : 20140207
 			<h2>Data Format</h2>
 		</div>
 		<p id="intropara">Next we will be discussing the format of the data being sent. Petfinder supports two formats: XML and JSON. XML is the default format, 
-		however, we will be working with JSON. It is very important to understand the structure of JSON because all of the information we request will be wrapped up
-		in JSON and it requires specific operators to extract data. We will be discussing the basics of JSON, but a much more thorough explanation of 
+		however, we will be working with JSON. It is very important to understand the structure of JSON because all of the information we request will be sent as 
+		a JSON string and it requires specific operators to extract data. We will be discussing the basics of JSON, but a much more thorough explanation of 
 		JSON can be found <a href="http://www.json.org/">here</a>. 
 		</p>
 	</div>
@@ -58,8 +57,9 @@ Released   : 20140207
 	<div id="content">
 	<h2 id="header2">JSON</h2>
 	<p id="textcontent">JSON stands for <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation. Data exchanged between servers 
-	can only be in text. JSON is in an all text format, but is structured like a JavaScript object. This allows us to utilize the dot 
-	operator when extracting information. These two examples contain the same information except one is in JSON format and the other is a JavaScript object.
+	can only be in text. JSON is an all text format, but is structured like a JavaScript object. This allows us to utilize the dot 
+	operator when extracting information by easily switching from JSON to JavaScript object and vice-versa. These two examples contain the same information except one is 
+	in JSON format and the other is a JavaScript object.
 	</p>
 	<br>
 	<div>
@@ -78,16 +78,16 @@ Released   : 20140207
 	</div>
 						
 	<p id="textcontent">The data is written as name/value pairs. As you can see from the two examples, the main difference between JSON and JavaScript 
-	is that the name portion of the pairs in JSON have to be in quotes while JavaScript does not. It is also important to note that 
-	the assigned value can be a nested JSON object. In our example, we have a an object named pizza with two name/value pairs: <em>Hawaiin/object</em> 
+	is that the name portion of the pairs in JSON have to be enclosed in double quotes while a JavaScript object does not. It is also important to note that 
+	the assigned value can be a nested object in JSON format. In our example, we have a an object named pizza with two name/value pairs: <em>Hawaiin/object</em> 
 	and <em>Vegetarian/object</em>. These objects are also in JSON format whose name/value pairs are: <em>name/(name of pizza)</em> and 
 	<em>toppings/(array of toppings)</em>. The values in JSON can be of most types including a string, a number, a JSON object, an array, 
-	a boolean, or null. However, it cannot be a function, a date, or undefined.  
+	a boolean, or null. However, it cannot be a function, a date, or undefined like with JavaScript objects.  
 	</p>
 	
 	<h2 id="header2">Accessing Data from JSON</h2>
-	<p id="textcontent">As mentioned above, due to the similar structure between JSON and JavaScript objects, we can use dot notation to access specific data from a JSON object. In our above example, we use 
-	<code>pizza.Vegetarian.toppings[0]</code> to grab the value "olives". 
+	<p id="textcontent">As mentioned above, due to the similar structure between JSON and JavaScript objects, we can use dot notation to access specific data from objects of JSON format. In our above example, we use 
+	<code>pizza.Vegetarian.toppings[0]</code> to grab the value "olives". This table illustrates how to cascade down an objects of JSON format until you reach your desired value that is of a simple data type like a string. 
 	</p>
 	<div id="content">
 	<table style="width: 100%;">
@@ -153,11 +153,11 @@ Released   : 20140207
   </tbody>
 </table>
 </div>
-<p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your JSON object (ex. New York Style) then you will need to use bracket notation 
+<p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your object (ex. New York Style) then you will need to use bracket notation 
 to access its value. Accessing New York Style toppings would look like <code>pizza["New York Style"].toppings[0]</code>.
 </p>
 <p id="textcontent">The last bit about handling JSON data is converting JavaScript to JSON and vice-versa. JavaScript has two built-in functions for handling these operations: 
-<code>JSON.stringify</code> converts a JavaScript object to a JSON object and <code>JSON.parse</code> converts a JSON object to a JavaScript object. Here is an example of the 
+<code>JSON.stringify</code> converts a JavaScript object to a JSON string and <code>JSON.parse</code> converts a JSON string to a JavaScript object. Here is an example of the 
 <code>JSON.stringify</code> function on our pizza JSON object.
 </p>
 <div id="content"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/uxux39cv/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div>

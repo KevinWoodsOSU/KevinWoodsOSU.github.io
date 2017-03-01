@@ -35,9 +35,8 @@ Released   : 20140207
 				<li><a href="index.html" accesskey="1" title="">Introduction</a></li>
 				<li><a href="settingUp.html" accesskey="2" title="">Setting Up</a></li>
 				<li><a href="json.html" accesskey="3" title="">JSON</a></li>
-				<li><a href="jquery.html" accesskey="4" title="">jQuery</a></li>
 				<li class="current_page_item"><a href="apiRequest.html" accesskey="5" title="">API Request</a></li>
-				<li><a href="dom" accesskey="4" title="">DOM</a></li>
+				<li><a href="dom.html" accesskey="5" title="">DOM</a></li>
 			</ul>
 		</div>
 	</div>
@@ -78,35 +77,36 @@ Released   : 20140207
 	{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"pet":{"options":{"option":[{"$t":"hasShots"},{"$t":"altered"},{"$t":"housetrained"}]},"status":{"$t":"A"},"contact":{"phone":{"$t":"708 829 6013 "},"state":{"$t":"IL"},"address2":{},"email":{"$t":"catvandotnr@yahoo.com"},"city":{"$t":"Maywood"},"zip":{"$t":"60153"},"fax":{},"address1":{}},"age":{"$t":"Adult"},"size":{"$t":"M"},"media":{"photos":{"photo":[{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=60&-pnt.jpg","@id":"1"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=95&-fpm.jpg","@id":"1"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=500&-x.jpg","@id":"1"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=300&-pn.jpg","@id":"1"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=50&-t.jpg","@id":"1"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=60&-pnt.jpg","@id":"2"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=95&-fpm.jpg","@id":"2"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=500&-x.jpg","@id":"2"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=300&-pn.jpg","@id":"2"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=50&-t.jpg","@id":"2"}]}},"id":{"$t":"30089000"},"shelterPetId":{},"breeds":{"breed":[{"$t":"Domestic Long Hair"},{"$t":"Tortoiseshell"}]},"name":{"$t":"Goldfinger"},"sex":{"$t":"F"},"description":{"$t":"Goldfinger is a sweet and shy girl that is just beginning to come out of her shell. She seems to be quite intimidated by the high-activity foster home she is in, but in times of quiet she's proven herself to be incredibly sweet and not averse to TLC. In the right environment and with one-on-one caring attention, she would flourish into the incredible sweetheart that we've had glimpses of so far. If you want to meet this lovely girl to get an idea of what a sweetheart she is, make an appointment with CatVando! :)"},"mix":{"$t":"yes"},"shelterId":{"$t":"IL570"},"lastUpdate":{"$t":"2014-11-11T15:14:41Z"},"animal":{"$t":"Cat"}},"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","header":{"timestamp":{"$t":"2017-03-01T00:36:58Z"},"status":{"message":{},"code":{"$t":"100"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}
 	</pre> 
 	
-	<p id="textcontent">This giant JSON string contains all of the desired information from our API request. We are able to see this because of the 
-	<code>JSON.stringify(data)</code> function which turned the object sent to use by Petfinder into a JSON string. Unfortunately 
-	this isn't very pleasant to look at. What we've also done in our code is log the object sent to use by Petfinder to the console.
-	The console presents this data in a nice way like shown below.</p>
+	<p id="textcontent">This giant JSON string contains all of the desired information from our API request. The returned object is contained in the variable <code>data</code>. 
+	We are able to see this because of the <code>JSON.stringify(data)</code> function which turned the object sent to use by Petfinder into a JSON string. Unfortunately 
+	this isn't very pleasant to look at. What we've also done in our code is log the object sent to use by Petfinder to the console. The console presents this data in a nice 
+	way like shown below.
+	</p>
 		
 		<div><img src="consoleapireq.png" alt="consoleLog"></div>
 	
 	<p id="textcontent">You can access this by pressing F12 on any webpage and selecting the "console" tab at the top of the new window. I've already 
 	expanded a few tabs to show the string contained in the name "name". As explained in the <a href="json.html">previous section</a> 
-	we can access this information by using the dot operator on data. In this case it will look like <code>data.petfinder.pet.name.$t</code>.
+	we can access this information by using the dot operator on the object <code>data</code>. In this case it will look like <code>data.petfinder.pet.name.$t</code>.
 	which will return the string "Goldfinger". This is the name of a random animal in Petfinder's database. All other values associated 
-	with this JSON object will belong to the Goldfinger.
+	with this <code>data</code> object will belong to Goldfinger.
 	</p>
 	
 	
 	<h2 id="header2">API Magic</h2>
-	<p id="textcontent">The magic of an API call is all in the url. In one string we say who to extract information from, what information 
-	we want extracted, validate our call with an API key, and declare the format we want the information returned in. That's a lot to remember. 
-	Thankfully, this is divided into seperate pieces in the form of <strong>http://api.petfinder.com/my.method?key=12345&arg1=foo&token=67890&sig=abcdef</strong>	
-	Let's break down this url to make things easier.
+	<p id="textcontent">The magic of an API call is all in the url. In one string we say who to request information from, what information 
+	we want, and validate our call with an API key. That's a lot to remember. 
+	Thankfully, this is divided into seperate pieces in the form of: <strong>http://api.petfinder.com/my.method?key=12345&arg1=foo&token=67890&sig=abcdef</strong>	
 	</p>
-		<ul class="urlList">
-			<li class="urlList"><strong>http://api.petfinder.com/</strong>: lets jQuery know that we want information from Petfinder and that's where we can find it. Pretty simple so far.<li>
-			<li class="urlList"><strong>my.method?</strong>: Here is where you declared what kind of information we want. In our case, we asked for the method pet.getRandom which
-				returns information from a random pet in Petfinder's database. The <strong>?</strong> at the end of <strong>my.method</strong> 
+	Let's break down this url to make things easier.
+		<ul>
+			<li class="urlList"><strong>http://api.petfinder.com/</strong>: This lets jQuery know that we want information from Petfinder and that's where we can find it. Pretty simple so far.<li>
+			<li class="urlList"><strong>my.method?</strong>: Here is where you declared what kind of information we want. In our case, we used the method pet.getRandom which
+				returns information for a random pet in Petfinder's database. The <strong>?</strong> at the end of <strong>my.method</strong> 
 				signifies that we are using a "GET" request and that query arguments are to follow.
 			<li class="urlList"><strong>key=12345</strong>: This is where you enter your API Key in place of 12345.
 			<li class="urlList"><strong>&arg1=foo</strong>: The <strong>&</strong> symbol seperates query arguments from one another. <strong>arg1=foo</strong> 
-				is a query argument specific to our <strong>my.method</strong>. These arguments change our search criteria. In our example we requested 
+				is a query argument specific to <strong>my.method</strong>. These arguments change our search criteria. In our example we requested 
 				that Petfinder return basic information about the pet using the argument <strong>output=basic</strong>. Multiple arguments can be present in 
 				the query and a list of arguments for each method can be found <a href="https://www.petfinder.com/developers/api-docs#methods">here</a>.
 			<li class="urlList"><strong>token=67890&sig=abcdef</strong>: These arguments are used for security purposes when requesting shelter records. They 
@@ -114,16 +114,18 @@ Released   : 20140207
 		</ul>
 		
 	<h2 id="header2">Why jQuery?</h2>
-	<p id="textcontent">To put it simply, jQuery makes things much easier than other approaches to performing API calls. This has a lot to do with 
-		<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">HTTP access control (CORS)</a>. CORS prevents requests from
-		a webpage to a domain on a different server. This means that typical <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> methods
-		will not work, like <code>XMLHttpRequest()</code> and you will get an error message in the console that looks like: <img src="accesscontrol.png">
+	<p id="textcontent">To put it simply, jQuery makes things much easier than other approaches to performing API calls. jQuery is a JavaScript library that 
+		simplifies many features of JavaScript. It was first introduced in 2006 and is quickly becoming a standard with major tech companies who are bundling it into 
+		their software like Microsoft and Nokia. jQuery simplifies API calls because it avoids  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">HTTP access control (CORS)</a>. 
+		CORS prevents requests from a webpage to a domain on a different server. This means that typical <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> methods
+		will not work, like <code>XMLHttpRequest()</code>, because you will get an error message in the console that looks like: 
 	</p>
+	<img src="accesscontrol.png">
 	<p id="textcontent">We are able to get around this using a combination of jQuery and <a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a>. JSONP 
 		stands for "JSON with padding". While JSON requests are done using <code>XMLHttpRequest()</code>, JSONP requests are done inside of a script tag 
 		whose source is set to the target URL. The JSONP response is passed as an argument to a callback function which is why we added the argument 
 		<code>&callback=?</code> to the end of our example url. jQuery requires <code>&callback=?</code> to be included in the request and handles all of 
-		the details with returning the response. There is a great explaination of JSONP in <a href="http://stackoverflow.com/questions/3839966/can-anyone-explain-what-jsonp-is-in-layman-terms">stackoverflow</a>.
+		the details when returning the response. There is a great explaination of JSONP over at <a href="http://stackoverflow.com/questions/3839966/can-anyone-explain-what-jsonp-is-in-layman-terms">StackOverflow</a>.
 	</p>
 		
 		
