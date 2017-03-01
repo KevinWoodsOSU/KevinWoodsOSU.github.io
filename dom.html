@@ -56,14 +56,27 @@ Released   : 20140207
 </div>
 <div id="wrapper3">
 	<div id="content">
-	<h2 id="header2">Introduction to DOM</h2>
+	<h2 id="header2">jQuery Syntax</h2>
 	<p id="textcontent">Let's start by implementing a button to change some text to red. Again we are using jQuery, but this time we will go over the the code in more detail.
 	</p>
 	<div id="content">
 	<iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/1g6c3uzy/4/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 	</div>
-	
-	<br>
+	<p id="textcontent">jQuery syntax is designed for simplicity. All it is doing is selecting some HTML elements and perfoming some action 
+		in the form: <strong>$(selector).action()</strong>.
+	</p>
+	<ul>
+		<li><strong>$(selector)</strong> accesses the desired HTML elements. Some of the selector syntax is shown below:
+			<ul>
+				<li><strong>$(this)</strong>: selects the current element</li>
+				<li><strong>$("div")</strong>: selects all div elements</li>
+				<li><strong>$(".text")</strong>: selects all elements with class = "text"</li>
+				<li><strong>$("#text")</strong>: selects all elements with id = "text"</li>
+			</ul>
+		<li><strong>.action()</strong> represents some sort of event, like a button click, which performs an action, like changing text color. 
+			More event examples can be found at <a href="https://www.w3schools.com/jquery/jquery_events.asp">w3schools</a>.
+				
+			
 	
 						
 	
