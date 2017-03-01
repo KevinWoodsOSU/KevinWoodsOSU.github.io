@@ -108,8 +108,12 @@ Released   : 20140207
 			<li class="urlList"><strong>key=12345</strong>: This is where you enter your API Key in place of 12345.
 			<li class="urlList"><strong>&arg1=foo</strong>: The <strong>&</strong> symbol seperates query arguments from one another. <strong>arg1=foo</strong> 
 				is a query argument specific to our <strong>my.method</strong>. These arguments change our search criteria. In our example we requested 
-				the 
-	
+				that Petfinder return basic information about the pet using the argument <strong>output=basic</strong>. Multiple arguments can be present in 
+				the query and a list of arguments for each method can be found <a href="https://www.petfinder.com/developers/api-docs#methods">here</a>.
+			<li class="urlList"><strong>token=67890&sig=abcdef</strong>: These arguments are used for security purposes when requesting shelter records. They 
+				are optional in all other method calls. We will not be using them, but more information on Petfinder's security can be found <a href="https://www.petfinder.com/developers/api-docs#security">here</a>.
+		</ul>
+				
 <p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your JSON object (ex. New York Style) then you will need to use bracket notation 
 to access its value. Accessing New York Style toppings would look like <code>pizza["New York Style"].toppings[0]</code>.
 </p>
