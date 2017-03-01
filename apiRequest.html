@@ -61,10 +61,9 @@ Released   : 20140207
 	basic information for a random pet in their database.
 	<pre>
 	$(document).ready(function() {
-	var url = 'http://api.petfinder.com/pet.getRandom?key=yourKeyHere&output=basic&format=json'; 
 	$.ajax({ 
 	  type: 'GET', 
-	  url: url + '&callback=?', 
+	  url: 'http://api.petfinder.com/pet.getRandom?key=yourKeyHere&output=basic&format=json&callback=?', 
 	  dataType: 'json', 
 	  success: function(data) { 
 	    console.log(data);
@@ -88,16 +87,28 @@ Released   : 20140207
 		<div><img src="consoleapireq.png" alt="consoleLog"></div>
 	
 	<p id="textcontent">You can access this by pressing F12 on any webpage and selecting the "console" tab at the top of the new window. I've already 
-	expanded a few tabs to show the objects contained in the name "pet" and the string contained in the name "name". As explained in the <a href="json.html">previous section</a> 
-	we can access this information by using the dot operator on data. In this case it will look like <code>data.petfinder.pet.name[$t]</code>.
+	expanded a few tabs to show the string contained in the name "name". As explained in the <a href="json.html">previous section</a> 
+	we can access this information by using the dot operator on data. In this case it will look like <code>data.petfinder.pet.name.$t</code>.
 	which will return the string "Goldfinger". This is the name of a random animal in Petfinder's database. All other values associated 
 	with this JSON object will belong to the Goldfinger.
 	</p>
 	
 	
-	<h2 id="header2">Accessing Data from JSON</h2>
-	<p id="textcontent">
+	<h2 id="header2">API Magic</h2>
+	<p id="textcontent">The magic of an API call is all in the url. In one string we say who to extract information from, what information 
+	we want extracted, validate our call with an API key, and declare the format we want the information returned in. That's a lot to remember. 
+	Thankfully, this is divided into seperate pieces in the form of <strong>http://api.petfinder.com/my.method?key=12345&arg1=foo&token=67890&sig=abcdef</strong>	
+	Let's break down this url to make things easier.
 	</p>
+		<ul class="urlList">
+			<li class="urlList"><strong>http://api.petfinder.com/</strong>: lets jQuery know that we want information from Petfinder and that's where we can find it. Pretty simple so far.<li>
+			<li class="urlList"><strong>my.method?</strong>: Here is where you declared what kind of information we want. In our case, we asked for the method pet.getRandom which
+				returns information from a random pet in Petfinder's database. The <strong>?</strong> at the end of <strong>my.method</strong> 
+				signifies that we are using a "GET" request and that query arguments are to follow.
+			<li class="urlList"><strong>key=12345</strong>: This is where you enter your API Key in place of 12345.
+			<li class="urlList"><strong>&arg1=foo</strong>: The <strong>&</strong> symbol seperates query arguments from one another. <strong>arg1=foo</strong> 
+				is a query argument specific to our <strong>my.method</strong>. These arguments change our search criteria. In our example we requested 
+				the 
 	
 <p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your JSON object (ex. New York Style) then you will need to use bracket notation 
 to access its value. Accessing New York Style toppings would look like <code>pizza["New York Style"].toppings[0]</code>.
