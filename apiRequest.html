@@ -75,11 +75,20 @@ Released   : 20140207
 	});
 	</pre>
 						
-	<p id="textcontent">Unfortunately we cannot make this call successfully in JSFiddle, so below is a screenshot of what this 
-	script will produce when running it with html. 
+	<p id="textcontent">This is the result of our API request. 
 	<pre style="overflow: scroll">
 	{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"pet":{"options":{"option":[{"$t":"hasShots"},{"$t":"altered"},{"$t":"housetrained"}]},"status":{"$t":"A"},"contact":{"phone":{"$t":"708 829 6013 "},"state":{"$t":"IL"},"address2":{},"email":{"$t":"catvandotnr@yahoo.com"},"city":{"$t":"Maywood"},"zip":{"$t":"60153"},"fax":{},"address1":{}},"age":{"$t":"Adult"},"size":{"$t":"M"},"media":{"photos":{"photo":[{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=60&-pnt.jpg","@id":"1"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=95&-fpm.jpg","@id":"1"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=500&-x.jpg","@id":"1"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=300&-pn.jpg","@id":"1"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/30089000/1/?bust=1408636210&width=50&-t.jpg","@id":"1"},{"@size":"pnt","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=60&-pnt.jpg","@id":"2"},{"@size":"fpm","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=95&-fpm.jpg","@id":"2"},{"@size":"x","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=500&-x.jpg","@id":"2"},{"@size":"pn","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=300&-pn.jpg","@id":"2"},{"@size":"t","$t":"http://photos.petfinder.com/photos/pets/30089000/2/?bust=1408636210&width=50&-t.jpg","@id":"2"}]}},"id":{"$t":"30089000"},"shelterPetId":{},"breeds":{"breed":[{"$t":"Domestic Long Hair"},{"$t":"Tortoiseshell"}]},"name":{"$t":"Goldfinger"},"sex":{"$t":"F"},"description":{"$t":"Goldfinger is a sweet and shy girl that is just beginning to come out of her shell. She seems to be quite intimidated by the high-activity foster home she is in, but in times of quiet she's proven herself to be incredibly sweet and not averse to TLC. In the right environment and with one-on-one caring attention, she would flourish into the incredible sweetheart that we've had glimpses of so far. If you want to meet this lovely girl to get an idea of what a sweetheart she is, make an appointment with CatVando! :)"},"mix":{"$t":"yes"},"shelterId":{"$t":"IL570"},"lastUpdate":{"$t":"2014-11-11T15:14:41Z"},"animal":{"$t":"Cat"}},"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","header":{"timestamp":{"$t":"2017-03-01T00:36:58Z"},"status":{"message":{},"code":{"$t":"100"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}
-	</pre>	
+	</pre> 
+	This giant JSON string contains all of the desired information from our API request. We are able to see this because of the 
+	<code>JSON.stringify(data)</code> function which turned the object sent to use by Petfinder into a JSON string. Unfortunately 
+	this isn't very pleasant to look at. What we've also done in our code is log the object sent to use by Petfinder to the console.
+	The console presents this data in a nice way like shown below.
+		<div><img src="consoleapirequest.png" alt="consoleLog"></div>
+	You can access this by pressing F12 on any webpage and selecting the "console" tab at the top of the new window. I've already 
+	expanded a few tabs to show the objects contained in the value "pet". As explained in the <a href="json.html">previous section</a> 
+	we can access this information by using the dot operator on data. In this case it will look like <code>data.petfinder.pet</code>.
+	</p>
+	
 	
 	<h2 id="header2">Accessing Data from JSON</h2>
 	<p id="textcontent">
