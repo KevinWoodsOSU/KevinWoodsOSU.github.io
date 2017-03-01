@@ -117,7 +117,16 @@ Released   : 20140207
 	<p id="textcontent">To put it simply, jQuery makes things much easier than other approaches to performing API calls. This has a lot to do with 
 		<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">HTTP access control (CORS)</a>. CORS prevents requests from
 		a webpage to a domain on a different server. This means that typical <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> methods
-		will not work, like <code>XMLHttpRequest()</code>
+		will not work, like <code>XMLHttpRequest()</code> and you will get an error message in the console that looks like: <img src="accesscontrol.png">
+	</p>
+	<p id="textcontent">We are able to get around this using a combination of jQuery and <a href="https://en.wikipedia.org/wiki/JSONP">JSONP</a>. JSONP 
+		stands for "JSON with padding". While JSON requests are done using <code>XMLHttpRequest()</code>, JSONP requests are done inside of a script tag 
+		whose source is set to the target URL. The JSONP response is passed as an argument to a callback function which is why we added the argument 
+		<code>&callback=?</code> to the end of our example url. jQuery requires <code>&callback=?</code> to be included in the request and handles all of 
+		the details with returning the response. There is a great explaination of JSONP in <a href="http://stackoverflow.com/questions/3839966/can-anyone-explain-what-jsonp-is-in-layman-terms">stackoverflow</a>.
+	</p>
+		
+		
 			
 	
 	<div id="button"><a href="index - Copy.html">Next</a></div>
