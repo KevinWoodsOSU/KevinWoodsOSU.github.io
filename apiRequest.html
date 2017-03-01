@@ -85,11 +85,13 @@ Released   : 20140207
 	this isn't very pleasant to look at. What we've also done in our code is log the object sent to use by Petfinder to the console.
 	The console presents this data in a nice way like shown below.</p>
 		
-		<div><img src="consoleapirequest.png" alt="consoleLog"></div>
+		<div><img src="consoleapireq.png" alt="consoleLog"></div>
 	
 	<p id="textcontent">You can access this by pressing F12 on any webpage and selecting the "console" tab at the top of the new window. I've already 
-	expanded a few tabs to show the objects contained in the value "pet". As explained in the <a href="json.html">previous section</a> 
-	we can access this information by using the dot operator on data. In this case it will look like <code>data.petfinder.pet</code>.
+	expanded a few tabs to show the objects contained in the name "pet" and the string contained in the name "name". As explained in the <a href="json.html">previous section</a> 
+	we can access this information by using the dot operator on data. In this case it will look like <code>data.petfinder.pet.name[$t]</code>.
+	which will return the string "Goldfinger". This is the name of a random animal in Petfinder's database. All other values associated 
+	with this JSON object will belong to the Goldfinger.
 	</p>
 	
 	
