@@ -49,8 +49,7 @@ Released   : 20140207
 		</div>
 		<p id="intropara">Now that we have an idea of what an API is, how to get your own API key, and how the data will be delivered,  
 		we can finally make our first API request to Petfinder. We will be using <a href="https://jquery.com/">jQuery</a> to make this 
-		request. For now we won't worry too much about the syntax of jQuery, however we will be discussing what jQuery is doing 
-		and why we are using it in the <a href="jquery.html">next section</a>.
+		request. We won't worry too much about the syntax of jQuery, however at the end of this section we will discuss why we are using it.
 		</p>
 	</div>
 </div>
@@ -113,17 +112,13 @@ Released   : 20140207
 			<li class="urlList"><strong>token=67890&sig=abcdef</strong>: These arguments are used for security purposes when requesting shelter records. They 
 				are optional in all other method calls. We will not be using them, but more information on Petfinder's security can be found <a href="https://www.petfinder.com/developers/api-docs#security">here</a>.
 		</ul>
-				
-<p id="textcontent">One thing to remember when using dot notation is if there is a name with a space in your JSON object (ex. New York Style) then you will need to use bracket notation 
-to access its value. Accessing New York Style toppings would look like <code>pizza["New York Style"].toppings[0]</code>.
-</p>
-<p id="textcontent">The last bit about handling JSON data is converting JavaScript to JSON and vice-versa. JavaScript has two built-in functions for handling these operations: 
-<code>JSON.stringify</code> converts a JavaScript object to a JSON object and <code>JSON.parse</code> converts a JSON object to a JavaScript object. Here is an example of the 
-<code>JSON.stringify</code> function on our pizza JSON object.
-</p>
-<div id="content"><iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/uxux39cv/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div>
-<p id="textcontent">All that the <code>JSON.stringify</code> function has done is wrap the names in the JavaScript object in quotation marks.</p>
-
+		
+	<h2 id="header2">Why jQuery?</h2>
+	<p id="textcontent">To put it simply, jQuery makes things much easier than other approaches to performing API calls. This has a lot to do with 
+		<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">HTTP access control (CORS)</a>. CORS prevents requests from
+		a webpage to a domain on a different server. This means that typical <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> methods
+		will not work, like <code>XMLHttpRequest()</code>
+			
 	
 	<div id="button"><a href="index - Copy.html">Next</a></div>
 </div>
