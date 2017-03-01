@@ -59,9 +59,10 @@ Released   : 20140207
 	basic information for a random pet in their database.
 	<pre>
 	$(document).ready(function() {
+	var url = 'http://api.petfinder.com/pet.getRandom?key=yourKeyHere&output=basic&format=json';
 	$.ajax({ 
 	  type: 'GET', 
-	  url: 'http://api.petfinder.com/pet.getRandom?key=yourKeyHere&output=basic&format=json&callback=?', 
+	  url: url + '&callback=?', 
 	  dataType: 'json', 
 	  success: function(data) { 
 	    console.log(data);
