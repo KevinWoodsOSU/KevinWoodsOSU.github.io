@@ -44,7 +44,7 @@ Released   : 20140207
 <div id="wrapper2">
 	<div id="welcome" class="container">
 		<div class="title">
-			<h2>Building a Website</h2>
+			<h2>The DOM</h2>
 		</div>
 		<p id="intropara">Now that we know how to make an API request and filter our results, we can start the journey of creating a website by pulling
 		information from Petfinder into the DOM. DOM stands for <a href="https://www.w3schools.com/js/js_htmldom.asp">Document Object Model</a>. When a webpage is loaded,
@@ -62,8 +62,9 @@ Released   : 20140207
 	<div id="content">
 	<iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/1g6c3uzy/4/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 	</div>
-	<p id="textcontent">jQuery syntax is designed for simplicity. All it is doing is selecting some HTML elements and perfoming some action 
-		in the form: <strong>$(selector).action()</strong>.
+	<p id="textcontent">jQuery syntax is designed for simplicity. All it needs to know is which HTML element to perform some action on
+		in the form: <strong>$(selector).action()</strong>. This gives us the option to manipulate HTML code dynamically, based on incoming information 
+		or user triggered events, while the webpage is live.
 	</p>
 	<ul>
 		<li class="urlList"><strong>$(selector)</strong> accesses the desired HTML elements. Some of the selector syntax is shown below:
@@ -75,6 +76,39 @@ Released   : 20140207
 			</ul>
 		<li class="urlList"><strong>.action()</strong> represents some sort of event, like a button click, which performs an action, like changing text color. 
 			More event examples can be found at <a href="https://www.w3schools.com/jquery/jquery_events.asp">w3schools</a>.
+	</ul>
+	<h2 id="header2">Building a Website</h2>
+	<p id="textcontent">We are now going to use information from an API request to populate our webpage with images and information. We will start with a simple example using 
+	JSON data of three animals pulled from our API request on the <a href="apiRequest.html">previous page</a>. Unfortunately we cannot make the API call using JSFiddle because 
+	Petfinder's url uses <code>http://</code> while JSFiddle uses <code>https://</code> and considers Petfinder to be unsecure. Instead, I've just copied the JSON data using 
+	<code>JSON.stringify()</code> and created an array of three objects containing data for three different animals.
+	</p>
+		<div id="content">
+			<iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/mc1quL1p/3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+		</div>
+	<p id="textcontent">If you are building a website with Petfinder's API, you most likely want to share photos of the aniamls. We've started with just that. Using jQuery, we have
+		pulled one photo of each of our three animals contained in the <code>petData</code> array of objects. Animals may have more than one photo, and each photo is presented in different sizes. 
+		Let's take a look at the code and see how we used jQuery and the DOM to make this happen. 
+		</p>
+		
+	<ul>
+		<li class="urlList"><strong>$(document).ready(function()</strong>: The selector select the entire HTML document and calls the ready() method. This waits until the DOM has been loaded and
+			is safe to work with. This allows us to declare variables after our functions since they will be present in the DOM while our scripts execute.<li>
+		<li class="urlList"><strong>$.each(petData, function(key, value)</strong>: This is a shorthand for loop that says, "For each element in the <code>petData</code> array, perform some function. 
+			So every time this loops, we will do something to with an object returned from Petfinder.<li>
+		<li class="urlList"><strong>var picture = value.petfinder.pet.media.photos.photo[3].$t</strong>: Here we store the link to one of the photos belonging to an animal.<li>
+		<li class="urlList"><strong>$("#appendhere").append('&ltli&gt&ltimg src="' + picture + '" /&gt&lt/li&gt')</strong>: In our HTML code we have an unordered list element with the id "appendhere". We select this 
+			element with the selector and add the text <code>&ltli&gt&ltimg src="' + picture + '" /&gt&lt/li&gt </code> as a child element to the unordered list. This creates a list element that contains and image 
+			whose source we've set to <code>picture</code>.<li>
+	</ul>
+	<p id="textcontent">Everyone loves pictures, but they're not much good on their own. Now we are going to add an event to each image. Everytime you click an image, relevant information will appear next to it.
+		</p>
+		<div id="content">
+			<iframe width="100%" height="300" src="//jsfiddle.net/Kwoods/kn9nkfcd/7/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+		</div>
+	<p id="textcontent">
+		
+						
 				
 			
 	
