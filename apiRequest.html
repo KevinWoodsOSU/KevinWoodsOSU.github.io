@@ -109,7 +109,7 @@ Released   : 20140207
 			<li class="urlList"><strong>key=12345</strong>: This is where you enter your API Key in place of 12345.
 			<li class="urlList"><strong>&arg1=foo</strong>: The <strong>&</strong> symbol seperates query arguments from one another. <strong>arg1=foo</strong> 
 				is a query argument specific to <strong>my.method</strong>. These arguments change our search criteria. In our example we requested 
-				that Petfinder return basic information about the pet using the argument <strong>output=basic</strong>. Multiple arguments can be present in 
+				that Petfinder return basic information about the pet using the argument <code>output=basic</code>. Multiple arguments can be present in 
 				the query and a list of arguments for each method can be found <a href="https://www.petfinder.com/developers/api-docs#methods">here</a>.
 			<li class="urlList"><strong>token=67890&sig=abcdef</strong>: These arguments are used for security purposes when requesting shelter records. They 
 				are optional in all other method calls. We will not be using them, but more information on Petfinder's security can be found <a href="https://www.petfinder.com/developers/api-docs#security">here</a>.
@@ -129,6 +129,9 @@ Released   : 20140207
 		<code>&callback=?</code> to the end of our example url. jQuery requires <code>&callback=?</code> to be included in the request and handles all of 
 		the details when returning the response. There is a great explaination of JSONP over at <a href="http://stackoverflow.com/questions/3839966/can-anyone-explain-what-jsonp-is-in-layman-terms">StackOverflow</a>.
 	</p>
+		<p id="textcontent">In order to use jQuery in your code you <strong>must</strong> include <code>&ltscript src="https://code.jquery.com/jquery-1.12.3.min.js" type="application/javascript"&gt&lt/script&gt</code>
+			in your HTML. jQuery is not a standard JavaScript library so this lets the browser know that it will be used.
+		</p>
 		
 	<br><br><br><a class="noblue" href="dom.html"><button class="button" style="vertical-align:middle"><span>Next</span></button></a>
 			
